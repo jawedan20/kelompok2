@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>Krida</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito" rel="stylesheet">
@@ -36,11 +36,11 @@
     </nav>
 
     <div class="container mt-5 pt-5">
-        <div class="row justify-content-center">
-            <div class="col-4">
+        <div class="main">
+            <div class="mr-5">
                 <img class="Logosmk" src="{{ asset('img/LOGO SMKN 2.png') }}">
             </div>
-            <div class="col-5 d-flex align-items-center">
+            <div class="ml-5 d-flex align-items-center">
                 <div>
                     <h1 class="instansi">SMKN 2 SUKABUMI</h1>
                     <h2 class="detail-instansi">Mulia, Professional, dan Juara</h2>
@@ -52,14 +52,39 @@
     <div class="content">
         <div class="container">
             <div class="d-flex justify-content-around justify-content-center">
-                <div class="eskul-link">
-
+                <div class="eskul-link ">
+                    <img src=" {{ asset('img/pramuka.png') }}" width="180px" height="180px" alt="Tunas Kelapa">
+                    <p class="eskul">PRAMUKA</p>
                 </div>
                 <div class="eskul-link">
-
+                    <img src="{{ asset('img/pmr.png') }}" width="150px" height="160px" alt="Tunas Kelapa">
+                    <p class="eskul pt-3 mb-3">PMR</p>
                 </div>
                 <div class="eskul-link">
+                    <img src="{{ asset('img/paskibra.png') }}" width="200px" height="150px" alt="Tunas Kelapa">
+                    <p class="eskul pt-4">PASKIBRA</p>
+                </div>
+            </div>
 
+            <div class="detail">
+                <h2>PRAMUKA</h2>
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Home</button>
+                        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</button>
+                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</button>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        
+                    </div>
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+                    </div>
+                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+
+                    </div>
                 </div>
             </div>
         </div>

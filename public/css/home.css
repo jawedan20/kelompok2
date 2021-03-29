@@ -1,3 +1,7 @@
+.main{
+    display: flex;
+    justify-content: center;
+}
 .Logosmk{
     width: 250px;
     height: 300px;
@@ -13,14 +17,44 @@
     margin-top:200px;
 }
 .eskul-link{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     margin-top: -100px;
-    background: #FFFFFF;
     box-shadow: 0px 3px 4px 3px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
     width: 20vw;
     height: 40vh;
+    padding-top: 20px;
+    background: #FFFFFF;
+    color: #727272;
+    font-size: 1.2rem;
+    font-weight: 700;
 }
 .pp{
     background: #FFFFFF;
     box-shadow: 0px 0px 4px 3px rgba(0, 0, 0, 0.25);
+}
+
+.eskul-link:hover{
+    border: 1px solid #0d6efd;
+    color: #0d6efd;
+}
+
+.detail{
+    margin-top: 100px;
+    box-shadow: 0px 3px 4px 3px rgba(0, 0, 0, 0.25);
+    height: 100vh;
+}
+
+@media (max-width:800px){
+    .main{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    .Logosmk{
+        display: none;
+    }
 }
