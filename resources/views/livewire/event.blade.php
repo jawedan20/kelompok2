@@ -1,2 +1,4 @@
+@section('page', 'Events')
 <div>
-assaasassasa</div>
+    
+</div>

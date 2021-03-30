@@ -25,10 +25,13 @@
 </head>
 
 <body>
-<div class="kotak"></div>
+    <div class="kotak"></div>
     <div class="navbar-nav sidebar">
         <div class="sidebar-brand" href="index.html">
-            <h1>KRIDA</h1>
+            <h1>
+                KRIDA
+            </h1>
+            <p>@yield('span')</p>
         </div>
         <a class="sidenav-link" href="/dashboard">
             <i class="fas fa-fw fa-home fa-lg"></i>
@@ -50,17 +53,23 @@
                     <h5 style="font-weight:700 ;">@yield('page')</h5>
                 </a>
                 <div class="d-flex align-items-center">
-                    <a href="#" class="mr-3">
+                    <a class="nav-link" id="notifDropdown" role="button" data-toggle="dropdown" aria-haspopup="true">
                         <div class="notif">
                             <i class="far fa-bell">
                             </i>
                             <p class="badge-notif">1</p>
                         </div>
                     </a>
-                    <a class="nav-link d-flex" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="dropdown-menu dropdown-menu-right shadow mr-4 " aria-labelledby="notifDropdown">
+                        <a class="dropdown-item">
+                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                            {{ __('Logout') }}
+                        </a>
+                    </div>
+                    <a class="nav-link d-flex" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true">
                         <span style="font-size: 1rem; ">{{ Auth::user()->name }}</span>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow " aria-labelledby="userDropdown">
+                    <div class="dropdown-menu dropdown-menu-right shadow mr-4 " aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -73,9 +82,9 @@
                     </div>
                 </div>
         </nav>
-    </div>
-    <div>
-        @yield('content')
+        <div class="container">
+            {{ $slot }}
+        </div>
     </div>
     @livewireScripts
 </body>
