@@ -21,70 +21,106 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/layout.css') }}" rel="stylesheet">
+    @yield('style')
     @livewireStyles
 </head>
 
 <body>
-    <div class="kotak"></div>
-    <div class="navbar-nav sidebar">
-        <div class="sidebar-brand" href="index.html">
-            <h1>
-                KRIDA
-            </h1>
-            <p>@yield('span')</p>
-        </div>
-        <a class="sidenav-link" href="/dashboard">
-            <i class="fas fa-fw fa-home fa-lg"></i>
-            <span class="pl-3">Dashboard</span>
-        </a>
-        <a class="sidenav-link" href="/e-voting">
-            <i class="fas fa-fw fa-vote-yea fa-lg"></i>
-            <span class="pl-3">E-Voting</span>
-        </a>
-        <a class="sidenav-link" href="event">
-            <i class="fas fa-fw fa-calendar fa-lg"></i>
-            <span class="pl-3">Event</span>
-        </a>
-    </div>
-    <div class="div">
-        <nav class="navbar navbar-transparent ">
-            <div class="container-fluid">
-                <a class="navbar-brand d-flex align-items-center" href="#">
-                    <h5 style="font-weight:700 ;">@yield('page')</h5>
-                </a>
-                <div class="d-flex align-items-center">
-                    <a class="nav-link" id="notifDropdown" role="button" data-toggle="dropdown" aria-haspopup="true">
-                        <div class="notif">
-                            <i class="far fa-bell">
-                            </i>
-                            <p class="badge-notif">1</p>
-                        </div>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow mr-4 " aria-labelledby="notifDropdown">
-                        <a class="dropdown-item">
-                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                            {{ __('Logout') }}
-                        </a>
-                    </div>
-                    <a class="nav-link d-flex" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true">
-                        <span style="font-size: 1rem; ">{{ Auth::user()->name }}</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow mr-4 " aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                            {{ __('Logout') }}
-                        </a>
+    <div class="all">
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                    </div>
-                </div>
-        </nav>
-        <div class="container">
-            {{ $slot }}
+        <div class="navbar-nav sidebar">
+            <div class="sidebar-brand" href="index.html">
+                <h1>
+                    KRIDA
+                </h1>
+                <p>@yield('span')</p>
+            </div>
+            <a class="sidenav-link" href="/dashboard">
+                <i class="fas fa-fw fa-home fa-lg"></i>
+                <span class="pl-3">Dashboard</span>
+            </a>
+            <a class="sidenav-link" href="/e-voting">
+                <i class="fas fa-fw fa-vote-yea fa-lg"></i>
+                <span class="pl-3">E-Voting</span>
+            </a>
+            <a class="sidenav-link" href="/event">
+                <i class="fas fa-fw fa-calendar fa-lg"></i>
+                <span class="pl-3">Event</span>
+            </a>
+            <a class="sidenav-link" href="/profile">
+                <i class="fas fa-fw fa-user fa-lg"></i>
+                <span class="pl-3">Profile</span>
+            </a>
         </div>
+        <div class="bar-responsive fixed-bottom bg-primary d-none ">
+            <a class="botnav-link" href="/dashboard">
+                <i class="fas fa-fw fa-home fa-lg"></i>
+                <span>Dashboard</span>
+            </a>
+            <a class="botnav-link" href="/e-voting">
+                <i class="fas fa-fw fa-vote-yea fa-lg"></i>
+                <span>E-Voting</span>
+            </a>
+            <a class="botnav-link" href="/event">
+                <i class="fas fa-fw fa-calendar fa-lg"></i>
+                <span>Event</span>
+            </a>
+            <a class="botnav-link" href="/profile">
+                <i class="fas fa-fw fa-user fa-lg"></i>
+                <span>Profile</span>
+            </a>
+        </div>
+        <div class="div">
+            <nav class="navbar navbar-transparent ">
+                <div class="container-fluid">
+                    <div class="navbar-brand d-flex align-items-center" href="#">
+                        <h5 style="font-weight:700; color: #3f8fdd; cursor: default;">@yield('page')</h5>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <a class="nav-link" id="notif" role="button" data-toggle="dropdown">
+                                <div class="notif">
+                                    <i class="far fa-bell">
+                                    </i>
+                                    <p class="badge-notif">1</p>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right text-muted shadow mr-4 notifications" aria-labelledby="notif">
+                                <p class="text-center header-notif">NOTIFICATIONS</p>
+                                <hr class="dropdown-divider">
+                                <div class="body-notif d-flex justify-content-center">
+                                    YOU DONT HAVE NOTIFICATIONS
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <a class="nav-link d-flex" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true">
+                                <span style="font-size: 1rem; ">{{ Auth::user()->name }}</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right shadow mr-4 " aria-labelledby="userDropdown">
+                                <div class="dropdown-item user">
+                                    <p class="name">{{ Auth::user()->name }}</p>
+                                    <p class="email">{{ Auth::user()->email }}</p>
+                                </div>
+                                <hr class="dropdown-divider">
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    {{ __('Logout') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+            </nav>
+            <div class="container">
+                {{ $slot }}
+            </div>
+        </div>
+
     </div>
     @livewireScripts
 </body>

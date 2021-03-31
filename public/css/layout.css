@@ -1,15 +1,11 @@
-.kotak{
-    position: absolute;
-    z-index: -99;
-    background-color: #f8f8f8;
-    width:100vw;
-    height:30vh;
+.all{
+    display: flex;
+    height: 100%;
+    min-height: 100vh;
 }
 .sidebar{   
     background: #EEF0FC;
-    height: 100vh;
     width: 200px;
-    position: fixed;
 }
 .sidebar-brand h1{
     color:#3f8fdd;
@@ -18,6 +14,7 @@
     letter-spacing: 10px;
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
+    cursor: default;
 }
 .sidebar-brand p{
     position: absolute;
@@ -37,10 +34,26 @@
     text-decoration: none;
     color: #3f8fdd;
 }
+.botnav-link{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #EEF0FC;
+    padding: 20px;
+}
+.botnav-link:hover{
+    color:#ffffff;
+    text-decoration: none;
+}
+.botnav-link span{
+    font-size: 0.6rem;
+    margin-top: 5px;
+}
 .div{
-    margin-left: 200px; /* Same as the width of the sidenav */
     font-size: 28px; /* Increased text to enable scrolling */
     padding: 0px 10px;
+    background-color: #f8f8f8;
+    width: 100% ;
 }
 .badge-notif{
     position: absolute;
@@ -56,12 +69,40 @@
 .dropdown-menu{
     border: none;
 }
+.notifications{
+    width:20vw;
+    height: 250px;
+}
+.header-notif{
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: -1px;
+}
+.name{
+    font-size: large;
+    font-weight: 450;
+    margin-bottom:-1px;
+    cursor: default;
+}
+.email{
+    font-size: smaller;
+    font-weight: 50;
+    margin-bottom: -1px;
+    cursor: default;
+}
+.user:hover{
+    background:none;
+}
 
 
-
-@media (max-width:900px){
+@media (max-width:700px){
     .sidebar{
         display: none !important;
+    }
+    .bar-responsive{
+        display: flex !important;
+        align-items: center;
+        justify-content: space-around;
     }
     .div{
         margin:0 !important;

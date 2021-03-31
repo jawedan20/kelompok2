@@ -1,0 +1,72 @@
+.header-profile i{
+ color: #504f4f;
+}
+.header-profile p{
+    font-size: 1.5rem;
+    font-weight: 55 0;
+    color:#595655;
+    margin-bottom: -4px;
+    margin-top: 10px;
+}
+.header-profile span{
+    font-size: 1.2rem;
+    color:#bbb8b9;
+}
+.link-profile{
+    margin-top: 20px;
+    border-bottom:1px solid rgba(0, 0, 0, 0.1) ;
+
+}
+.body-profile{
+    width: 600px;
+    margin-bottom: 50px;
+}
+.body-profile b{
+    margin: 20px 0;
+    color:#3f8fdd;
+    font-size: 1.1rem;
+}
+.ys{
+    border-radius: 10px;
+    background-color: #ffffff;
+    border-bottom:1px solid rgba(0, 0, 0, 0.1);
+    padding: 0 20px;
+}
+.ys label{
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #adb2bd;
+}
+.ys p{
+    font-size: 1rem;
+    color: #bbb8b9;
+}
+.ys button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    margin-top:  30px;
+    background-color: #ffffff;
+    font-size: 1rem;
+    color:#3f8fdd;
+    border: 1px solid #3f8fdd ;
+    border-radius: 5px;
+    width: 100px;
+}
+.ys button:hover{
+    background-color: #3f8fdd;
+    color: #ffffff;
+}
+
+@media (max-width:600px){
+    .body-profile{
+        width: 100%;
+        margin-bottom: 100px;
+    }
+}
+@media (max-width:600px){
+    .body-profile{
+        width: 300px;
+    }
+}

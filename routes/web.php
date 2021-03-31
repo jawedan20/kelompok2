@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Livewire;
-use App\Http\Livewire\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +24,5 @@ Auth::routes();
 Route::get('/dashboard', livewire\Dashboard::class)->name("dashboard");
 Route::get('/event', livewire\Event::class)->name("event");
 Route::get('/e-voting', livewire\EVoting::class)->name('e-voting');
+Route::get('/profile', livewire\Profile::class)->name('profile');
 Route::get('/admin', livewire\AdminPanel::class)->name('admin');
