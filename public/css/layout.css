@@ -9,21 +9,21 @@
 }
 .sidebar-brand h1{
     color:#3f8fdd;
-    text-align: center;
-    line-height: 100px;
+    padding: 30px 10px;
     letter-spacing: 10px;
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
     cursor: default;
 }
-.sidebar-brand p{
-    position: absolute;
-    color:red;
-    letter-spacing: 10px;
+.sidebar-brand span{
     margin-top: -40px;
-    margin-left: 40px;
+    margin-left: 45px;
+    position: absolute;
+    letter-spacing: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    cursor: default;
 }
-
 .sidenav-link{
     line-height: 60px;
     padding-left:20px;

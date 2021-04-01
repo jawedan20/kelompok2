@@ -21,8 +21,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
+// admin
+Route::get('/admin', livewire\DashboardAdmin::class)->name("admin");
+Route::get('/evoting-admin', livewire\EvotingAdmin::class)->name("evoting-admin");
+Route::get('/event-admin', livewire\EventAdmin::class)->name("event-admin");
+Route::get('/profile-admin', livewire\ProfileAdmin::class)->name("profile-admin");
+
+
+// user
 Route::get('/dashboard', livewire\Dashboard::class)->name("dashboard");
 Route::get('/event', livewire\Event::class)->name("event");
 Route::get('/e-voting', livewire\EVoting::class)->name('e-voting');
 Route::get('/profile', livewire\Profile::class)->name('profile');
-Route::get('/admin', livewire\AdminPanel::class)->name('admin');

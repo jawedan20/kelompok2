@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Dashboard</title>
+    <title>KRIDA - Admin Panel</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -26,45 +26,46 @@
 </head>
 
 <body>
-    <div class="all">
+<div class="all">
 
         <div class="navbar-nav sidebar">
             <div class="sidebar-brand" href="index.html">
                 <h1>
                     KRIDA
                 </h1>
+                <span class="text-secondary">Admin</span>
             </div>
-            <a class="sidenav-link" href="/dashboard">
+            <a class="sidenav-link" href="/admin">
                 <i class="fas fa-fw fa-home fa-lg"></i>
                 <span class="pl-3">Dashboard</span>
             </a>
-            <a class="sidenav-link" href="/e-voting">
+            <a class="sidenav-link" href="/evoting-admin">
                 <i class="fas fa-fw fa-vote-yea fa-lg"></i>
                 <span class="pl-3">E-Voting</span>
             </a>
-            <a class="sidenav-link" href="/event">
+            <a class="sidenav-link" href="/event-admin">
                 <i class="fas fa-fw fa-calendar fa-lg"></i>
                 <span class="pl-3">Event</span>
             </a>
-            <a class="sidenav-link" href="/profile">
+            <a class="sidenav-link" href="/profile-admin">
                 <i class="fas fa-fw fa-user fa-lg"></i>
                 <span class="pl-3">Profile</span>
             </a>
         </div>
         <div class="bar-responsive fixed-bottom bg-primary d-none ">
-            <a class="botnav-link" href="/dashboard">
+            <a class="botnav-link" href="/admin">
                 <i class="fas fa-fw fa-home fa-lg"></i>
                 <span>Dashboard</span>
             </a>
-            <a class="botnav-link" href="/e-voting">
+            <a class="botnav-link" href="/evoting-admin">
                 <i class="fas fa-fw fa-vote-yea fa-lg"></i>
                 <span>E-Voting</span>
             </a>
-            <a class="botnav-link" href="/event">
+            <a class="botnav-link" href="/event-admin">
                 <i class="fas fa-fw fa-calendar fa-lg"></i>
                 <span>Event</span>
             </a>
-            <a class="botnav-link" href="/profile">
+            <a class="botnav-link" href="/profile-admin">
                 <i class="fas fa-fw fa-user fa-lg"></i>
                 <span>Profile</span>
             </a>
@@ -119,7 +120,6 @@
                 {{ $slot }}
             </div>
         </div>
-
     </div>
     @livewireScripts
 </body>

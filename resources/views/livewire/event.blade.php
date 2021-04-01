@@ -1,5 +1,5 @@
 @section('page', 'Events')
-<div style="background: #FFFFFF; padding:20px; font-size:0.8rem;">
+<div class="shadow" style="background: #FFFFFF; padding:20px; font-size:0.8rem;">
     <table class="table table-borderless">
         <tr style="border-bottom: 1px solid #e1e1e1; color:#a1a4ab; font-weight: 600;">
             <td scope="col">No</td>
