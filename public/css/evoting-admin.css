@@ -1,23 +1,21 @@
-.ph{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 5px;
-    color: #5a5c69;
-    line-height: 25px;
+.card{
+    font-size: 1.1rem;
 }
-.primary .title{
-    font-size: 1rem;
-    color: #3f8fdd;
+.c1{
+    border-left: 5px solid #3490dc;
 }
-.primary .value{
-    line-height: 0;
-    font-size: 1.7rem;
+.c2{
+    border-left: 5px solid #38c172;
 }
-.title1{
+.c3{
+    border-left: 5px solid #ffed4a;
+}
+.h5{
+    color: rgb(90, 86, 86);
+}
+.col-auto{
+    color: #d8d8d8;
+}
+.text-xs{
     font-size: 0.8rem;
-    
-}
-.value1{
-    line-height: 0;
 }
