@@ -1,4 +1,7 @@
 @section('page', 'Event')
+@section('style')
+<link href="{{ asset('css/event-admin.css') }}" rel="stylesheet" />
+@stop
 
 <div class="mt-3">
     <div class="card shadow mb-4">
@@ -7,7 +10,9 @@
         </div>
         <div class="card-body">
             <div class="d-flex justify-content-between py-2">
-                <button class="btn btn-outline-success" type="button"><i class="fas fa-plus"></i></button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    <i class="fas fa-plus"></i>
+                </button>
                 <div class="input-group text-center" style="width: 200px;">
                     <input type="text" class="form-control">
                     <button class="btn btn-outline-primary" type="button"><i class="fas fa-search"></i></button>
@@ -55,4 +60,61 @@
                 </nav>
             </div>
         </div>
+
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" style="font-size: 1rem;">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-primary" id="staticBackdropLabel">Tambah Events</h5>
+                        <a type="button" data-bs-dismiss="modal" aria-label="Close" style="position: absolute; right:20px; top:5px; font-size:2rem; color:#a1a4ab;">x</a>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group d-flex justify-content-center align-items-center">
+                            <label class="col-md-4 col-form-label text-md-right">Kegiatan</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group d-flex justify-content-center align-items-center">
+                            <label class="col-md-4 col-form-label text-md-right">Waktu</label>
+
+                            <div class="col-md-6">
+                                <input type="date" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group d-flex justify-content-center align-items-center">
+                            <label class="col-md-4 col-form-label text-md-right">Status</label>
+
+                            <div class="col-md-6">
+                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <label class="btn btn-outline-success ">
+                                        <input type="radio" name="options" id="option1" autocomplete="off" checked> Selesai
+                                    </label>
+                                    <label class="btn btn-outline-danger">
+                                        <input type="radio" name="options" id="option2" autocomplete="off"> Batal
+                                    </label>
+                                    <label class="btn btn-outline-primary">
+                                        <input type="radio" name="options" id="option3" autocomplete="off"> Belum
+                                    </label>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-group d-flex justify-content-center align-items-center">
+                            <label class="col-md-4 col-form-label text-md-right">Keterangan</label>
+
+                            <div class="col-md-6">
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-primary">Kirim</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
