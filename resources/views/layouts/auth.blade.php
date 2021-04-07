@@ -25,8 +25,10 @@
     @livewireScripts
 </head>
 
-<body>
-    @yield('content')
+<body class="">
+    <div>
+        @yield('content')
+    </div>
     @livewireScripts
 </body>
 

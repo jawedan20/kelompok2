@@ -8,6 +8,6 @@ class EvotingAdmin extends Component
 {
     public function render()
     {
-        return view('livewire.admin.evoting-admin')->layout('layouts.admin');
+        return view('livewire.admin.evoting.evoting-admin')->layout('layouts.admin');
     }
 }

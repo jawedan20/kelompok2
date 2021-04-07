@@ -1,6 +1,6 @@
 @section('page', 'E-voting')
 @section('style')
-    <link rel="stylesheet" href="{{ asset('css/evoting-admin.css') }}">
+<link rel="stylesheet" href="{{ asset('css/evoting-admin.css') }}">
 @stop
 <div class="container mt-3">
     <div class="row justify-content-center">
@@ -52,5 +52,15 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="card mb-5">
+        <div class="row p-3">
+            <div class="col-xl-7">
+                <div class="card p-2 text-center">
+                    Tambah Column
+                </div>
+            </div>
+        </div>
+        
     </div>
 </div>

@@ -2,7 +2,6 @@
 @section('style')
 <link href="{{ asset('css/event-admin.css') }}" rel="stylesheet" />
 @stop
-
 <div class="mt-3">
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -14,107 +13,127 @@
                     <i class="fas fa-plus"></i>
                 </button>
                 <div class="input-group text-center" style="width: 200px;">
-                    <input type="text" class="form-control">
-                    <button class="btn btn-outline-primary" type="button"><i class="fas fa-search"></i></button>
+                    <input type="text" wire:model="search" class="form-control">
                 </div>
             </div>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    @if (session()->has('message'))
+                    <div class="alert alert-success">
+                        {{ session('message') }}
+                    </div>
+                    @endif
                     <thead>
-                        <tr style="border-bottom: 1px solid #e1e1e1; color:#a1a4ab; font-size: 1rem; font-weight: 600;">
-                            <td scope="col">No</td>
-                            <td scope="col">Kegiatan</td>
-                            <td scope="col">Waktu</td>
-                            <td scope="col">Status</td>
-                            <td scope="col">Keterangan</td>
+                        <tr style=" text-align:center; border-bottom: 1px solid #e1e1e1; color:#a1a4ab; font-size: 0.8rem; font-weight: 600;">
+                            <td>No</td>
+                            <td>Kegiatan</td>
+                            <td>Waktu</td>
+                            <td>Status</td>
+                            <td>Keterangan</td>
                             <td>Aksi</td>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr style="color:#a1a4ab; font-size:1rem; font-weight: 100;">
-                            <td scope="col">1</td>
-                            <td scope="col">upacara</td>
-                            <td scope="col">20 agustus 2003</td>
-                            <td scope="col">belum terlaksana</td>
-                            <td scope="col">-</td>
-                            <td scope="col" class="text-center"><i class="far fa-trash-alt fa-lg text-danger" style="cursor:pointer;"></i><i style="cursor:pointer;" class="ml-2 far fa-edit fa-lg text-warning"></i></td>
+                        @foreach($events as $index=>$event)
+                        <tr style="text-align:center; color:#a1a4ab; font-size:0.9rem; font-weight: 100;">
+                            <td>{{ $index+1 }}</td>
+                            <td>{{ $event->kegiatan }}</td>
+                            <td>{{ $event->waktu }}</td>
+                            <td>{{ $event->status }}</td>
+                            <td>{{ $event->keterangan }}</td>
+                            <td>
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Delete</button>
+                                <button wire:click="edit( {{ $event->id}} )" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                    <i class="far fa-edit"></i>
+                                </button>
+                            </td>
                         </tr>
+
+                        <div wire:ignore.self class="modal fade" id="exampleModal" aria-hidden="true">
+                            <div class="modal-dialog ">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Delete Confirm</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true close-btn">×</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p style="font-size:1rem; color:dimgray;">Apakah anda yakin untuk menghapusnya?</p>
+                                        <div class="text-right">
+                                            <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Tidak</button>
+                                            <button type="button" wire:click.prevent="delete({{ $event->id }})" class="btn btn-danger close-modal" data-dismiss="modal">Iyah</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        @endforeach
                     </tbody>
                 </table>
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination pagination-sm justify-content-end">
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" style="font-size: 1rem;">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title text-primary" id="staticBackdropLabel">Tambah Events</h5>
-                        <a type="button" data-bs-dismiss="modal" aria-label="Close" style="position: absolute; right:20px; top:5px; font-size:2rem; color:#a1a4ab;">x</a>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group d-flex justify-content-center align-items-center">
-                            <label class="col-md-4 col-form-label text-md-right">Kegiatan</label>
-
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" required>
-                            </div>
-                        </div>
-                        <div class="form-group d-flex justify-content-center align-items-center">
-                            <label class="col-md-4 col-form-label text-md-right">Waktu</label>
-
-                            <div class="col-md-6">
-                                <input type="date" class="form-control" required>
-                            </div>
-                        </div>
-                        <div class="form-group d-flex justify-content-center align-items-center">
-                            <label class="col-md-4 col-form-label text-md-right">Status</label>
-
-                            <div class="col-md-6">
-                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                    <label class="btn btn-outline-success ">
-                                        <input type="radio" name="options" id="option1" autocomplete="off" checked> Selesai
-                                    </label>
-                                    <label class="btn btn-outline-danger">
-                                        <input type="radio" name="options" id="option2" autocomplete="off"> Batal
-                                    </label>
-                                    <label class="btn btn-outline-primary">
-                                        <input type="radio" name="options" id="option3" autocomplete="off"> Belum
-                                    </label>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="form-group d-flex justify-content-center align-items-center">
-                            <label class="col-md-4 col-form-label text-md-right">Keterangan</label>
-
-                            <div class="col-md-6">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                        <button type="button" class="btn btn-primary">Kirim</button>
-                    </div>
+                <div style="font-size: 0.7rem; font-weight: 1000;">
+                    {{ $events->links() }}
                 </div>
             </div>
         </div>
+
+        <form wire:submit.prevent="addEvent">
+            <div wire:ignore.self class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" style="font-size: 1rem;">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-primary" id="staticBackdropLabel">Tambah Events</h5>
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true close-btn">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group d-flex justify-content-center align-items-center">
+                                <label class="col-md-4 col-form-label text-md-right">Kegiatan</label>
+
+                                <div class="col-md-6">
+                                    <input type="text" wire:model="kegiatan" class="form-control">
+                                    @error('kegiatan') <small class="text-danger">{{$message}}</small>@enderror
+                                </div>
+                            </div>
+                            <div class="form-group d-flex justify-content-center align-items-center">
+                                <label class="col-md-4 col-form-label text-md-right">Waktu</label>
+
+                                <div class="col-md-6">
+                                    <input type="date" wire:model="waktu" class="form-control">
+                                    @error('waktu') <small class="text-danger">{{$message}}</small>@enderror
+                                </div>
+                            </div>
+                            <div class="form-group d-flex justify-content-center align-items-center">
+                                <label class="col-md-4 col-form-label text-md-right">Status</label>
+
+                                <div class="col-md-6">
+                                    <select wire:model="status" class="form-control">
+                                        <option selected></option>
+                                        <option value="selesai">Terlaksana</option>
+                                        <option value="belum">Belum Terlaksana</option>
+                                        <option value="batal">Batal</option>
+                                    </select>
+                                    @error('status') <small class="text-danger">{{$message}}</small>@enderror
+                                </div>
+                            </div>
+                            <div class="form-group d-flex justify-content-center align-items-center">
+                                <label class="col-md-4 col-form-label text-md-right">Keterangan</label>
+
+                                <div class="col-md-6">
+                                    <textarea wire:model="keterangan" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    @error('keterangan') <small class="text-danger">{{$message}}</small>@enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-primary">Kirim</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </div>

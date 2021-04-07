@@ -14,10 +14,10 @@ class CreateEventsTable extends Migration
     public function up()
     {
         Schema::create('events', function (Blueprint $table) {
-            $table->integer('no')->autoIncrement();
+            $table->id();
             $table->string('kegiatan');
             $table->date('waktu');
-            $table->enum('status', ['terlaksana', 'batal']);
+            $table->enum('status', ['selesai', 'batal', 'belum']);
             $table->text('keterangan');
             $table->timestamps();
         });
