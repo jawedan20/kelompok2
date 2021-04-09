@@ -3,30 +3,42 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Profile') }}</div>
+                    <div class="card-header">Profile</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
+                        <form wire:submit.prevent="save">
                             <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
+                                <label for="nis" class="col-md-4 col-form-label text-md-right">Nis</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                    <input wire:model="nis" id="nis" type="text" class="form-control @error('nis') is-invalid @enderror" required autofocus>
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Kelas') }}</label>
+                                <label for="kelas" class="col-md-4 col-form-label text-md-right">Kelas</label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="text" class="form-control @error('kelas') is-invalid @enderror" value="{{ old('kelas') }}" required>
+                                    <input wire:model="kelas" id="kelas" type="text" class="form-control @error('kelas') is-invalid @enderror" required>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="text" class="col-md-4 col-form-label text-md-right">{{ __('Ekskul Krida') }}</label>
+                                <label class="col-md-4 col-form-label text-md-right">Eskul</label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="text" class="form-control @error('eskul') is-invalid @enderror" value="{{ old('eskul') }}" required>
+                                    <select wire:model="eskul" class="form-control">
+                                        <option selected></option>
+                                        <option value="Pramuka">Pramuka</option>
+                                        <option value="Pmr">Pmr</option>
+                                        <option value="Paskibra">Paskibra</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-4 col-form-label text-md-right">alamat</label>
+
+                                <div class="col-md-6">
+                                    <input wire:model="alamat" type="text" class="form-control @error('eskul') is-invalid @enderror" required>
                                 </div>
                             </div>
 

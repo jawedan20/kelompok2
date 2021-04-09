@@ -26,6 +26,7 @@ Route::get('/admin', livewire\DashboardAdmin::class)->name("admin");
 Route::get('/evoting-admin', livewire\EvotingAdmin::class)->name("evoting-admin");
 Route::get('/event-admin', livewire\EventAdmin::class)->name("event-admin");
 Route::get('/profile-admin', livewire\ProfileAdmin::class)->name("profile-admin");
+Route::get('/evoting-admin/id', livewire\Admin\TableVote::class)->name("id");
 
 
 // user

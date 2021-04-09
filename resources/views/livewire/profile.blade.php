@@ -8,7 +8,7 @@
         <i class="fas fa-user-circle fa-4x"></i>
         <div class="d-flex flex-column align-items-center">
             <p>{{ Auth::user()->name }}</p>
-            <span>11907922</span>
+            <span>{{ $student->nis }}</span>
         </div>
     </div>
     <div class="body-profile d-flex flex-column">
@@ -16,15 +16,15 @@
         <b>Informasi Pribadi</b>
         <div class="ys">
             <label>Kelas</label>
-            <p>XI RPL 2</p>
+            <p>{{ $student->kelas}}</p>
         </div>
         <div class="ys">
             <label>Eskul Krida</label>
-            <p>Pramuka</p>
+            <p>{{ $student->eskul}}</p>
         </div>
         <div class="ys">
             <label>Alamat</label>
-            <p>jl selajambe rt10/04</p>
+            <p>{{ $student->alamat }}</p>
         </div>
         <b>Pengaturan akun</b>
         <div class=" d-flex justify-content-between ys">

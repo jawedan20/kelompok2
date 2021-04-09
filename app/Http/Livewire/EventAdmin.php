@@ -47,7 +47,7 @@ class EventAdmin extends Component
 
         session()->flash('message', 'Post successfully updated.');
 
-        return redirect()->to('/event-admin');
+        return redirect()->to('/event-admin'); 
     }
 
     public function edit($id)
@@ -64,5 +64,4 @@ class EventAdmin extends Component
     {
         Events::find($id)->delete();
     }
-
 }
