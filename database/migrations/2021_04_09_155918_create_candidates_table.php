@@ -23,7 +23,7 @@ class CreateCandidatesTable extends Migration
             $table->unsignedBigInteger('id_vote');
             $table->timestamps();
 
-            $table->foreign('id_vote')->references('id')->on('votes');
+            $table->foreign('id_vote')->references('id')->on('votes')->onDelete('cascade');
         });
     }
 

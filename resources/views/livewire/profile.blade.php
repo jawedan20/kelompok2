@@ -34,7 +34,6 @@
                     {{ Auth::user()->email}}
                 </p>
             </div>
-            <button>Edit</button>
         </div>
         <div class="d-flex justify-content-between ys">
             <div>
@@ -43,7 +42,7 @@
                     &#9679 &#9679 &#9679 &#9679 &#9679 &#9679 &#9679
                 </p>
             </div>
-            <button>Edit</button>
+            <button wire:click="edit({{Auth::user()->id}})">Edit</button>
         </div>
     </div>
 </div>

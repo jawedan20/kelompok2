@@ -1,12 +1,33 @@
 @section('page', 'E-Voting')
-@section('style')
-<link href="{{ asset('css/evoting.css') }}" rel="stylesheet" />
-@stop
 <div>
-    <div class="card shadow mb-4 vote">
-        <div class="card-body d-flex flex-column align-items-center mt-3">
-            <img src="{{ asset('img/empty.svg') }}" alt="svg" class="svg">
-            <p class="py-3 mt-4 text-secondary" style="font-size:1.5rem; font-family:sans-serif;">Tidak ada Event Pemilihan</p>
-        </div>
+    <div class="shadow mt-3" style="background: #FFFFFF; padding:20px; font-size:0.8rem;">
+        <table class="text-center table table-borderless ">
+            <tr class="bg-primary" style="border-bottom: 1px solid #e1e1e1; color:white; font-weight: 600;">
+                <td scope="col" style="width: 10%;">No</td>
+                <td scope="col" style="width:25%;">Events Vote</td>
+                <td scope="col" style="width: 25%;">Date</td>
+                <td scope="col" style="width: 20%;">Status</td>
+                <td scope="col" style="width: 20%;"></td>
+            </tr>
+            @foreach($votes as $index=>$vote)
+            <tr style="text-align:center; color:#a1a4ab; font-size:0.9rem; font-weight: 100;">
+                <td>{{$index + 1}}</td>
+                <td>{{$vote -> event}}</td>
+                <td>{{$vote -> date}}</td>
+                <td>{{$vote -> status}}</td>
+                <td>
+                    @if($vote -> status == "closed")
+                    <a class="btn btn-sm btn-danger">Result</a>
+                    @elseif($vote -> status == "ongoing")
+                    <a href="/evoting/{{$vote -> id}}" class="btn btn-sm btn-primary">Options</a>
+                    @else
+                    -
+                    @endif
+                </td>
+            </tr>
+            @endforeach
+
+        </table>
     </div>
+
 </div>

@@ -1,7 +1,36 @@
 .vote{
     border:none; 
 }
-.svg{
-    text-align: center;
-    width:300px ;   
+.card-header{
+    display: flex;
+    font-size:1rem;
+    height: 50px;
+}
+.card-body{
+    font-size:1rem;
+}
+.title{
+    font-weight: 700;
+    margin: 0 10px;
+}
+.status{
+    border-radius: 5px;
+    padding: 0 10px;
+    height: 100%;
+    margin-left: 10px;
+}
+.card-title{
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 5px;
+    color: #3490dc;
+}
+.vote-btn{
+    display: none;
+}
+.vote:hover > .vote-btn{
+    display: block;
+}
+.vote:hover > img{
+    opacity: 0.5;
 }

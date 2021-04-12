@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Admin;
 
 use Livewire\Component;
 use Livewire\WithPagination;
 
 use App\Models\Events;
 
-class EventAdmin extends Component
+class Event extends Component
 {
     public $eventId, $kegiatan, $waktu, $status, $keterangan;
     public $search;
@@ -24,9 +24,9 @@ class EventAdmin extends Component
         if ($this->search !== null) {
             $events = Events::where('kegiatan', 'like', '%' . $this->search . '%')->paginate(5);
         }
-        return view('livewire.admin.event-admin', [
+        return view('livewire.admin.event', [
             'events' => $events,
-        ])->layout('layouts.admin');
+        ]);
     }
 
     public function addEvent()
@@ -46,8 +46,13 @@ class EventAdmin extends Component
         ]);
 
         session()->flash('message', 'Post successfully updated.');
+        
+        $this->kegiatan= "";
+        $this->waktu= "";
+        $this->status= "";
+        $this->keterangan= "";
 
-        return redirect()->to('/event-admin'); 
+        return redirect()->to('/admin/event'); 
     }
 
     public function edit($id)

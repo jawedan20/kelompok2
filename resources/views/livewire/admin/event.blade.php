@@ -93,37 +93,7 @@
                                 <label class="col-md-4 col-form-label text-md-right">Kegiatan</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" wire:model="kegiatan" class="form-control">
-                                    @error('kegiatan') <small class="text-danger">{{$message}}</small>@enderror
-                                </div>
-                            </div>
-                            <div class="form-group d-flex justify-content-center align-items-center">
-                                <label class="col-md-4 col-form-label text-md-right">Waktu</label>
 
-                                <div class="col-md-6">
-                                    <input type="date" wire:model="waktu" class="form-control">
-                                    @error('waktu') <small class="text-danger">{{$message}}</small>@enderror
-                                </div>
-                            </div>
-                            <div class="form-group d-flex justify-content-center align-items-center">
-                                <label class="col-md-4 col-form-label text-md-right">Status</label>
-
-                                <div class="col-md-6">
-                                    <select wire:model="status" class="form-control">
-                                        <option selected></option>
-                                        <option value="selesai">Terlaksana</option>
-                                        <option value="belum">Belum Terlaksana</option>
-                                        <option value="batal">Batal</option>
-                                    </select>
-                                    @error('status') <small class="text-danger">{{$message}}</small>@enderror
-                                </div>
-                            </div>
-                            <div class="form-group d-flex justify-content-center align-items-center">
-                                <label class="col-md-4 col-form-label text-md-right">Keterangan</label>
-
-                                <div class="col-md-6">
-                                    <textarea wire:model="keterangan" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                    @error('keterangan') <small class="text-danger">{{$message}}</small>@enderror
                                 </div>
                             </div>
                         </div>

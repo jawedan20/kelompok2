@@ -53,26 +53,12 @@
             </div>
         </div>
     </div>
-    <div class="card shadow d-flex flex-row justify-content-between align-items-center p-3">
-        <div>
-            Jumlah Tabel : <span>00</span>
-        </div>
-        <div>
-            <form class="input-group">
-                <input type="text" class="form-control" placeholder="Judul Tabel" aria-label="Recipient's username" aria-describedby="button-addon2">
-                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Tambah</button>
-            </form>
-        </div>
-    </div>
     <div>
         <div class="mb-4">
             <div class="card shadow">
-                <div class="card-header py-2">
-                    <h6 class="m-0 font-weight-bold text-primary">Kandidat naon</h6>
-                </div>
                 <div class="card-body table-responsive">
                     <div class="d-flex justify-content-between py-2">
-                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#asd">
+                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                             <i class="fas fa-plus"></i>
                         </button>
                         <div class="input-group text-center" style="width: 200px;">
@@ -82,23 +68,35 @@
                     <table class="text-center table table-borderless ">
                         <tr style="color:#a1a4ab;border-bottom: 1px solid #e1e1e1; font-weight: 600; font-size:1rem;">
                             <td scope="col" style="width: 5%;">No</td>
-                            <td scope="col" style="width: 20%;">Events</td>
-                            <td scope="col" style="width:10%;">status</td>
-                            <td scope="col" style="width:25%;">Date</td>
+                            <td scope="col" style="width: 30%;">Events</td>
+                            <td scope="col" style="width: 10%;">status</td>
+                            <td scope="col" style="width: 20%;">Date</td>
                             <td scope="col" style="width: 20%;">aksi</td>
-                            <td scope="col" style="width: 10%;">link</td>
+                            <td scope="col" style="width: 20%;"></td>
                         </tr>
                         @foreach($votes as $index=>$vote)
                         <tr style="color:#a1a4ab; font-weight: 100; font-size:0.8rem;">
                             <td>{{ $index+1 }}</td>
-                            <td>{{ $vote->event }}</td>
+                            <td style="max-width: 10px;">{{ $vote->event }}</td>
                             <td>{{ $vote->status }}</td>
                             <td>{{ $vote->date }}</td>
                             <td>
-                                <a class="btn btn-success">Start</a>
+                                @if($vote->status == 'pending')
+                                <a wire:click="setStatus({{$vote->id}}, 'ongoing')" class="btn btn-sm btn-success">Start</a>
+                                <a wire:click="setStatus({{$vote->id}}, 'cancel')" class="btn btn-sm btn-outline-success">Cancel</a>
+                                <a class="btn btn-sm btn-sm btn-danger"><i class="fas fa-trash fa-sm"></i></a>
+                                @elseif($vote->status == 'ongoing')
+                                <a wire:click="setStatus({{$vote->id}}, 'closed')" class="btn  btn-sm btn-outline-danger">Close</a>
+                                @else
+                                <a wire:click="delete({{$vote->id}})" class="btn btn-sm btn-danger"><i class="fas fa-trash fa-sm"></i></a>
+                                @endif
                             </td>
                             <td>
-                                <a href="/evoting-admin/id" class="btn btn-outline-primary">Options</a>
+                                @if($vote->status == 'pending')
+                                <a class="btn btn-sm btn-outline-primary" href="/admin/evoting/{{$vote->id}}">Options</a>
+                                @else
+                                <a href="" class="btn btn-sm btn-primary">result</a>
+                                @endif
                             </td>
                         </tr>
                         @endforeach
@@ -106,23 +104,9 @@
                 </div>
             </div>
         </div>
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Perolehan Suara</h6>
-            </div>
-            <div class="card-body">
-                <h4 class="small font-weight-bold">kandidat 1<span class="float-right">20%</span></h4>
-                <div class="progress mb-4">
-                    <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <h4 class="small font-weight-bold">kandidat 2 <span class="float-right">40%</span></h4>
-                <div class="progress mb-4">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-            </div>
-        </div>
-        <form wire:submit.prevent="addCandidate">
-            <div wire:ignore.self class="modal fade" id="asd" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" style="font-size: 1rem;">
+
+        <form wire:submit.prevent="addVotes">
+            <div wire:ignore.self class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" style="font-size: 1rem;">
                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -140,20 +124,7 @@
                                     @error('event') <small class="text-danger">{{$message}}</small>@enderror
                                 </div>
                             </div>
-                            <div class="form-group d-flex justify-content-center align-items-center">
-                                <label class="col-md-4 col-form-label text-md-right">status</label>
 
-                                <div class="col-md-6">
-                                    <select wire:model="status" class="form-control">
-                                        <option selected></option>
-                                        <option value="pending">Pending</option>
-                                        <option value="ongoing">ongoing</option>
-                                        <option value="finished">finished</option>
-                                        <option value="cancel">cancel</option>
-                                    </select>
-                                    @error('status') <small class="text-danger">{{$message}}</small>@enderror
-                                </div>
-                            </div>
                             <div class="form-group d-flex justify-content-center align-items-center">
                                 <label class="col-md-4 col-form-label text-md-right">Date</label>
 
@@ -172,6 +143,4 @@
             </div>
         </form>
     </div>
-
-
 </div>

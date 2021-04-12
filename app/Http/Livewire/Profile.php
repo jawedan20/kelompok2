@@ -16,4 +16,5 @@ class Profile extends Component
             "student" => $student,
         ]);
     }
+
 }

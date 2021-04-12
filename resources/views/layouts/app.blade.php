@@ -27,7 +27,50 @@
 
 <body>
     <div class="all">
-
+        @if(Auth::user()->email == "www@gmail.com")
+        <div class="navbar-nav sidebar">
+            <div class="sidebar-brand" href="index.html">
+                <h1>
+                    KRIDA
+                </h1>
+                <span class="text-secondary">Admin</span>
+            </div>
+            <a class="sidenav-link" href="/admin">
+                <i class="fas fa-fw fa-home fa-lg"></i>
+                <span class="pl-3">Dashboard</span>
+            </a>
+            <a class="sidenav-link" href="/admin/evoting">
+                <i class="fas fa-fw fa-vote-yea fa-lg"></i>
+                <span class="pl-3">E-Voting</span>
+            </a>
+            <a class="sidenav-link" href="/admin/event">
+                <i class="fas fa-fw fa-calendar fa-lg"></i>
+                <span class="pl-3">Event</span>
+            </a>
+            <a class="sidenav-link" href="/admin/profile">
+                <i class="fas fa-fw fa-user fa-lg"></i>
+                <span class="pl-3">Profile</span>
+            </a>
+        </div>
+        <div class="bar-responsive fixed-bottom bg-primary d-none ">
+            <a class="botnav-link" href="/admin">
+                <i class="fas fa-fw fa-home fa-lg"></i>
+                <span>Dashboard</span>
+            </a>
+            <a class="botnav-link" href="/evoting-admin">
+                <i class="fas fa-fw fa-vote-yea fa-lg"></i>
+                <span>E-Voting</span>
+            </a>
+            <a class="botnav-link" href="/event-admin">
+                <i class="fas fa-fw fa-calendar fa-lg"></i>
+                <span>Event</span>
+            </a>
+            <a class="botnav-link" href="/profile-admin">
+                <i class="fas fa-fw fa-user fa-lg"></i>
+                <span>Profile</span>
+            </a>
+        </div>
+        @else
         <div class="navbar-nav sidebar">
             <div class="sidebar-brand" href="index.html">
                 <h1>
@@ -69,6 +112,7 @@
                 <span>Profile</span>
             </a>
         </div>
+        @endif
         <div class="div">
             <nav class="navbar navbar-transparent ">
                 <div class="container-fluid">
@@ -122,6 +166,8 @@
 
     </div>
     @livewireScripts
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 </body>
 
 </html>
