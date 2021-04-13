@@ -95,7 +95,7 @@
                                 @if($vote->status == 'pending')
                                 <a class="btn btn-sm btn-outline-primary" href="/admin/evoting/{{$vote->id}}">Options</a>
                                 @else
-                                <a href="" class="btn btn-sm btn-primary">result</a>
+                                <a href="/result/{{$index + 1}}" class="btn btn-sm btn-primary">result</a>
                                 @endif
                             </td>
                         </tr>

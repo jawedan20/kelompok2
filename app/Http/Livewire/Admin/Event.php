@@ -31,7 +31,6 @@ class Event extends Component
 
     public function addEvent()
     {
-        echo '<script>alert("asd")</script>';
         $this->validate([
             'kegiatan' => 'required',
             'waktu' => 'required',
@@ -39,7 +38,7 @@ class Event extends Component
             'keterangan' => 'required',
         ]);
 
-        Events::updateOrCreate(['id' => $this->eventId], [
+        Events::create([
             'kegiatan' => $this->kegiatan,
             'waktu' => $this->waktu,
             'status' => $this->status,

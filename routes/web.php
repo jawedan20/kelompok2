@@ -37,5 +37,5 @@ Route::get('/event', livewire\Event::class)->name("event");
 Route::get('/evoting', livewire\EVoting::class)->name('e-voting');
 Route::get('/profile', livewire\Profile::class)->name('profile');
 Route::get('/account', livewire\Account::class)->name('account');
-Route::get('/evoting/{idVote}', livewire\Candidate::class)->name('account');
+Route::get('/evoting/{idVote}', livewire\Candidate::class)->name('candidate');
 Route::get('/result/{idVoting}', livewire\Candidate::class)->name('result');
