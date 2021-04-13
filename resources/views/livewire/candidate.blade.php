@@ -14,21 +14,23 @@
             </div>
             <div class="container">
                 <div class="row">
+                    @if($candidates)
                     @foreach($candidates as $candidate)
-                    <div class="col-xl-3 mb-2">
+                    <div class="col-xl-3 mb-3">
                         <div class="card" style="width: 12rem;">
                             <div class="vote">
                                 <img height="150px" src="{{asset('storage/foto/'.$candidate -> foto)}}" class="card-img-top" alt="foto kandidat">
-                                <a style="position:absolute; left:35%; top:25%;" class="vote-btn btn btn-primary">Vote</a>
+                                <a wire:click="vote({{$candidate->id}}, {{ Auth::user()->id}})" style="position:absolute; left:35%; top:25%;" class="vote-btn btn btn-primary">Vote</a>
                             </div>
                             <div class="card-body text-center">
-                                <h5 class="card-title">{{$candidate -> nama}}</h5>
+                                <h5 style="margin-bottom: 5px;" class="card-title">{{$candidate -> nama}}</h5>
                                 <h5 class="card-title">{{$candidate -> kelas}}</h5>
                                 <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Detail</button>
                             </div>
                         </div>
                     </div>
                     @endforeach
+                    @endif
                 </div>
             </div>
         </div>

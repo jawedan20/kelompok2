@@ -1,7 +1,4 @@
 @section('page', 'Event')
-@section('style')
-<link href="{{ asset('css/event-admin.css') }}" rel="stylesheet" />
-@stop
 <div class="mt-3">
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -89,13 +86,31 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <div class="form-group d-flex justify-content-center align-items-center">
+                            <div class="form-group d-flex align-items-center">
                                 <label class="col-md-4 col-form-label text-md-right">Kegiatan</label>
 
                                 <div class="col-md-6">
-
+                                    <input wire:model="kegiatan" type="text" class="form-control form-control-sm">
+                                    @error('kegiatan') <small class="text-danger">{{$message}}</small>@enderror
                                 </div>
                             </div>
+                            <div class="form-group d-flex align-items-center">
+                                <label class="col-md-4 col-form-label text-md-right">Waktu</label>
+
+                                <div class="col-md-6">
+                                    <input wire:model="waktu" type="date" class="form-control form-control-sm">
+                                    @error('waktu') <small class="text-danger">{{$message}}</small>@enderror
+                                </div>
+                            </div>
+                            <div class="form-group d-flex align-items-center">
+                                <label class="col-md-4 col-form-label text-md-right">Keterangan</label>
+
+                                <div class="col-md-6">
+                                    <textarea style="resize: none;" wire:model="keterangan" class="form-control form-control-sm"></textarea>
+                                    @error('keterangan') <small class="text-danger">{{$message}}</small>@enderror
+                                </div>
+                            </div>
+                            <input wire:click="status" type="hidden" value="belum">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>

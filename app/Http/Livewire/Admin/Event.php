@@ -14,7 +14,7 @@ class Event extends Component
 
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
-    
+
     protected $queryString = ['search'];
 
     public function render()
@@ -31,6 +31,7 @@ class Event extends Component
 
     public function addEvent()
     {
+        echo '<script>alert("asd")</script>';
         $this->validate([
             'kegiatan' => 'required',
             'waktu' => 'required',
@@ -45,26 +46,19 @@ class Event extends Component
             'keterangan' => $this->keterangan,
         ]);
 
-        session()->flash('message', 'Post successfully updated.');
-        
-        $this->kegiatan= "";
-        $this->waktu= "";
-        $this->status= "";
-        $this->keterangan= "";
-
-        return redirect()->to('/admin/event'); 
+        return redirect()->to('/admin/event');
     }
 
     public function edit($id)
     {
         $event = Events::findOrfail($id);
-        $this->eventId = $id; 
+        $this->eventId = $id;
         $this->kegiatan = $event->kegiatan;
         $this->waktu = $event->waktu;
         $this->status = $event->status;
         $this->keterangan = $event->keterangan;
     }
-    
+
     public function delete($id)
     {
         Events::find($id)->delete();
