@@ -79,8 +79,8 @@
     margin-bottom: -1px;
 }
 .name{
-    font-size: large;
-    font-weight: 450;
+    font-size: smaller;
+    font-weight: 700;
     margin-bottom:-1px;
     cursor: default;
 }

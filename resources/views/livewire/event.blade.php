@@ -9,7 +9,7 @@
             <td scope="col">Status</td>
             <td scope="col" style="max-width: 10px;">Keterangan</td>
         </tr>
-        @if(!$events)
+        @if($events)
         @foreach($events as $index=>$event)
         <tr style="text-align:center; color:#a1a4ab; font-size:0.9rem; font-weight: 100;">
             <td>{{$index + 1}}</td>

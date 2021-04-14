@@ -9,7 +9,7 @@
                 <td scope="col" style="width: 20%;">Status</td>
                 <td scope="col" style="width: 20%;"></td>
             </tr>
-            @if(!$votes)
+            @if($votes)
             @foreach($votes as $index=>$vote)
             <tr style="text-align:center; color:#a1a4ab; font-size:0.9rem; font-weight: 100;">
                 <td>{{$index + 1}}</td>

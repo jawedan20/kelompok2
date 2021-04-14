@@ -47,10 +47,6 @@
                 <i class="fas fa-fw fa-calendar fa-lg"></i>
                 <span class="pl-3">Event</span>
             </a>
-            <a class="sidenav-link" href="/admin/profile">
-                <i class="fas fa-fw fa-user fa-lg"></i>
-                <span class="pl-3">Profile</span>
-            </a>
         </div>
         <div class="bar-responsive fixed-bottom bg-primary d-none ">
             <a class="botnav-link" href="/admin">
@@ -64,10 +60,6 @@
             <a class="botnav-link" href="/event-admin">
                 <i class="fas fa-fw fa-calendar fa-lg"></i>
                 <span>Event</span>
-            </a>
-            <a class="botnav-link" href="/profile-admin">
-                <i class="fas fa-fw fa-user fa-lg"></i>
-                <span>Profile</span>
             </a>
         </div>
         @else
@@ -114,48 +106,30 @@
         </div>
         @endif
         <div class="div">
-            <nav class="navbar navbar-transparent ">
+            <nav class="navbar navbar-transparent mb-4 ">
                 <div class="container-fluid">
-                    <div class="navbar-brand d-flex align-items-center" href="#">
+                    <div class="navbar-brand" href="#">
                         <h5 style="font-weight:700; color: #3f8fdd; cursor: default;">@yield('page')</h5>
                     </div>
-                    <div class="d-flex align-items-center">
-                        <div>
-                            <a class="nav-link" id="notif" role="button" data-toggle="dropdown">
-                                <div class="notif">
-                                    <i class="far fa-bell">
-                                    </i>
-                                    <p class="badge-notif">1</p>
-                                </div>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right text-muted shadow mr-4 notifications" aria-labelledby="notif">
-                                <p class="text-center header-notif">NOTIFICATIONS</p>
-                                <hr class="dropdown-divider">
-                                <div class="body-notif d-flex justify-content-center">
-                                    YOU DONT HAVE NOTIFICATIONS
-                                </div>
+                    <div class="d-flex">
+                        <a style="font-size: 0.8rem; " class="nav-link" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true">
+                            {{ Auth::user()->name }}
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow mr-4 " aria-labelledby="userDropdown">
+                            <div class="dropdown-item user">
+                                <p class="name">{{ Auth::user()->name }}</p>
+                                <p class="email">{{ Auth::user()->email }}</p>
                             </div>
-                        </div>
-                        <div>
-                            <a class="nav-link d-flex" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true">
-                                <span style="font-size: 1rem; ">{{ Auth::user()->name }}</span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right shadow mr-4 " aria-labelledby="userDropdown">
-                                <div class="dropdown-item user">
-                                    <p class="name">{{ Auth::user()->name }}</p>
-                                    <p class="email">{{ Auth::user()->email }}</p>
-                                </div>
-                                <hr class="dropdown-divider">
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                            <hr class="dropdown-divider">
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    {{ __('Logout') }}
-                                </a>
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                {{ __('Logout') }}
+                            </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
                         </div>
                     </div>
             </nav>
@@ -166,6 +140,7 @@
 
     </div>
     @livewireScripts
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 </body>
