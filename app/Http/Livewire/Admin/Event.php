@@ -16,6 +16,11 @@ class Event extends Component
     protected $paginationTheme = 'bootstrap';
 
     protected $queryString = ['search'];
+    
+    public function mount()
+    {
+        $this->status = 'belum';
+    }
 
     public function render()
     {
@@ -34,18 +39,23 @@ class Event extends Component
         $this->validate([
             'kegiatan' => 'required',
             'waktu' => 'required',
-            'status' => 'required',
             'keterangan' => 'required',
         ]);
 
-        Events::create([
+        Events::updateOrCreate(['id' => $this->eventId], [
             'kegiatan' => $this->kegiatan,
             'waktu' => $this->waktu,
             'status' => $this->status,
             'keterangan' => $this->keterangan,
         ]);
-
+        
+        session()->flash('message', 'Post successfully updated.');
         return redirect()->to('/admin/event');
+
+        $this->kegiatan = "";
+        $this->waktu = "";
+        $this->status = "belum";
+        $this->keterangan = "";
     }
 
     public function edit($id)

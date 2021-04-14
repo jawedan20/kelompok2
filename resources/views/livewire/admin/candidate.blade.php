@@ -10,7 +10,7 @@
                         <i class="fas fa-plus"></i>
                     </button>
                     <div class="input-group text-center" style="width: 200px;">
-                        <input type="text" class="form-control form-control-sm">
+                        <input wire:model="search" placeholder="search.." type="text" class="form-control form-control-sm">
                     </div>
                 </div>
                 <table class="text-center table table-borderless ">
@@ -54,7 +54,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <input wire:model="idVote" type="hidden" value="{{$idVote}}">
+                        <input wire:model="idVote" type="hidden">
                         <div class="form-group d-flex">
                             <div class="col-md-1"></div>
                             <label class="col-md-2 col-form-label">Nama</label>

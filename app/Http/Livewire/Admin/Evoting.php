@@ -4,16 +4,29 @@ namespace App\Http\Livewire\Admin;
 
 use Livewire\Component;
 use App\Models\Votes;
+use App\Models\User;
+use Livewire\WithPagination;
 
 class Evoting extends Component
 {
-    public $event, $status, $date;
+    public $event, $status, $date, $search;
+
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
+    protected $queryString = ['search'];
 
     public function render()
     {
-        $votes = Votes::get();
+        $votes = Votes::orderBy('created_at', 'Desc')->paginate(5);
+        if ($this->search !== null) {
+            $votes = Votes::where('event', 'like', '%' . $this->search . '%')->paginate(5);
+        }
+        $sum = User::select(User::raw('count(id) as total'))->get();
+        $sumVotes = Votes::select(User::raw('count(id) as total'))->get();
         return view('livewire.admin.evoting', [
             'votes' => $votes,
+            'sum' => $sum,
+            'sumVotes' => $sumVotes,
         ]);
     }
 

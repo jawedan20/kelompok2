@@ -11,7 +11,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Jumlah pemilih</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">872178912798</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$sum[0]-> total}}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -20,33 +20,17 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-md-6 mb-4">
+        <div class="col-xl-5 col-md-12 mb-3">
             <div class="card c2 shadow py-1">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                sudah vote</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">1287=867</div>
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Jumlah Event</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$sumVotes[0]->total}}</div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-vote-yea fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card c3 shadow py-1">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                belum vote</div>
-                            <div class="h5 mb-0 font-weight-bold">9908890</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-times-circle fa-2x"></i>
+                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
@@ -62,7 +46,7 @@
                             <i class="fas fa-plus"></i>
                         </button>
                         <div class="input-group text-center" style="width: 200px;">
-                            <input type="text" class="form-control form-control-sm">
+                            <input wire:model="search" type="text" placeholder="Search..." class="form-control form-control-sm">
                         </div>
                     </div>
                     <table class="text-center table table-borderless ">
@@ -95,7 +79,7 @@
                                 @if($vote->status == 'pending')
                                 <a class="btn btn-sm btn-outline-primary" href="/admin/evoting/{{$vote->id}}">Options</a>
                                 @else
-                                <a href="/result/{{$index + 1}}" class="btn btn-sm btn-primary">result</a>
+                                <a href="/admin/result/{{$vote->id}}" class="btn btn-sm btn-primary">result</a>
                                 @endif
                             </td>
                         </tr>

@@ -6,11 +6,11 @@
         </div>
         <div class="card-body">
             <div class="d-flex justify-content-between py-2">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     <i class="fas fa-plus"></i>
                 </button>
                 <div class="input-group text-center" style="width: 200px;">
-                    <input type="text" wire:model="search" class="form-control">
+                    <input type="text" wire:model="search" placeholder="Search.." class="form-control form-control-sm">
                 </div>
             </div>
             <div class="table-responsive">
@@ -86,6 +86,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
+                            <input wire:model="status" class="form-control" value="belum">
                             <div class="form-group d-flex align-items-center">
                                 <label class="col-md-4 col-form-label text-md-right">Kegiatan</label>
 
@@ -110,7 +111,6 @@
                                     @error('keterangan') <small class="text-danger">{{$message}}</small>@enderror
                                 </div>
                             </div>
-                            <input wire:click="status" type="hidden" value="belum">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>

@@ -4,26 +4,34 @@ namespace App\Http\Livewire\Admin;
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 
 use App\Models\Candidates;
 use Illuminate\Support\Facades\Storage;
 
 class Candidate extends Component
 {
-    use WithFileUploads;
-    public $idVote, $nama, $kelas, $visi, $misi, $foto, $candidateId;
+    use WithFileUploads, WithPagination;
+
+    protected $paginationTheme = 'bootstrap';
     private $candidates;
+
+    public $search, $idVote, $nama, $kelas, $visi, $misi, $foto, $candidateId;
+    protected $queryString = ['search'];
+
 
     public function mount($idVote)
     {
         $this->idVote = $idVote;
-        $this->candidates = Candidates::where('id_vote', '=', $idVote)->get();
     }
     public function render()
     {
+        $this->candidates = Candidates::where('id_vote', $this->idVote)->get();
+        if ($this->search !== null) {
+            $this->candidates = Candidates::where('nama', 'like', '%' . $this->search . '%')->paginate(5);
+        }
         return view('livewire.admin.candidate', [
             'candidates' => $this->candidates,
-            'idVote' => $this->idVote,
         ]);
     }
 

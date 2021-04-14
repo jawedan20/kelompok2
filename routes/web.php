@@ -28,6 +28,7 @@ Route::prefix('admin')->group(function(){
     Route::get('/event', livewire\Admin\Event::class)->name("event-admin");
     Route::get('/profile', livewire\Admin\Profile::class)->name("profile-admin");
     Route::get('/evoting/{idVote}', livewire\Admin\Candidate::class);
+    Route::get('/result/{idVote}', livewire\Admin\Result::class)->name('result');
 });
 
 
@@ -38,4 +39,4 @@ Route::get('/evoting', livewire\EVoting::class)->name('e-voting');
 Route::get('/profile', livewire\Profile::class)->name('profile');
 Route::get('/account', livewire\Account::class)->name('account');
 Route::get('/evoting/{idVote}', livewire\Candidate::class)->name('candidate');
-Route::get('/result/{idVoting}', livewire\Candidate::class)->name('result');
+Route::get('/result/{idVote}', livewire\Result::class)->name('result');
