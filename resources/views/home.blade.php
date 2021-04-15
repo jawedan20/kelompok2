@@ -64,9 +64,9 @@
     <div class="footer shadow py-4">
         <div class="container">
             <div class="row justify-content-center my-2 mt-4">
-                <a class="footer-link" href=""><i class="text-white fab fa-facebook"></i></a>
-                <a class="footer-link" href=""><i class="text-white fab fa-github"></i></a>
-                <a class="footer-link" href=""><i class="text-white fab fa-instagram"></i></a>
+                <a class="footer-link" href="https://www.facebook.com/profile.php?id=100010443288989"><i class="fab fa-facebook"></i></a>
+                <a class="footer-link" href="https://github.com/jawedan20"><i class="fab fa-github"></i></a>
+                <a class="footer-link" href="https://www.instagram.com/m.jawa_/"><i class="fab fa-instagram"></i></a>
             </div>
             <div style="font-size: 0.6rem;" class="row justify-content-center h6">
                 &copy; 2021 Krida, Jelajahi, Pelajari

@@ -5,6 +5,8 @@ namespace App\Http\Livewire\Admin;
 use Livewire\Component;
 use App\Models\Votes;
 use App\Models\User;
+use App\Models\Events;
+
 use Livewire\WithPagination;
 
 class Evoting extends Component
@@ -41,6 +43,13 @@ class Evoting extends Component
             'event' => $this->event,
             'status' => 'pending',
             'date' => $this->date,
+        ]);
+
+        Events::create([
+            'kegiatan' => $this->event,
+            'waktu' => $this->date,
+            'status' => 'belum',
+            'keterangan' => 'Silahkan Check Evoting Page'
         ]);
 
         return redirect()->to('/admin/evoting');

@@ -16,9 +16,9 @@
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     @if (session()->has('message'))
-                    <div class="alert alert-success">
+                    <small class="alert alert-success">
                         {{ session('message') }}
-                    </div>
+                    </small>
                     @endif
                     <thead>
                         <tr style=" text-align:center; border-bottom: 1px solid #e1e1e1; color:#a1a4ab; font-size: 0.8rem; font-weight: 600;">
@@ -86,7 +86,6 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <input wire:model="status" class="form-control" value="belum">
                             <div class="form-group d-flex align-items-center">
                                 <label class="col-md-4 col-form-label text-md-right">Kegiatan</label>
 

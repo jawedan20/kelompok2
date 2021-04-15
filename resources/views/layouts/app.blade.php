@@ -27,7 +27,7 @@
 
 <body>
     <div class="all">
-        @if(Auth::user()->email == "www@gmail.com")
+        @if(Auth::user()->role == "admin")
         <div class="navbar-nav sidebar">
             <div class="sidebar-brand" href="index.html">
                 <h1>
@@ -53,11 +53,11 @@
                 <i class="fas fa-fw fa-home fa-lg"></i>
                 <span>Dashboard</span>
             </a>
-            <a class="botnav-link" href="/evoting-admin">
+            <a class="botnav-link" href="/admin/evoting">
                 <i class="fas fa-fw fa-vote-yea fa-lg"></i>
                 <span>E-Voting</span>
             </a>
-            <a class="botnav-link" href="/event-admin">
+            <a class="botnav-link" href="/admin/event">
                 <i class="fas fa-fw fa-calendar fa-lg"></i>
                 <span>Event</span>
             </a>
@@ -73,7 +73,7 @@
                 <i class="fas fa-fw fa-home fa-lg"></i>
                 <span class="pl-3">Dashboard</span>
             </a>
-            <a class="sidenav-link" href="/e-voting">
+            <a class="sidenav-link" href="/evoting">
                 <i class="fas fa-fw fa-vote-yea fa-lg"></i>
                 <span class="pl-3">E-Voting</span>
             </a>
@@ -91,7 +91,7 @@
                 <i class="fas fa-fw fa-home fa-lg"></i>
                 <span>Dashboard</span>
             </a>
-            <a class="botnav-link" href="/e-voting">
+            <a class="botnav-link" href="/evoting">
                 <i class="fas fa-fw fa-vote-yea fa-lg"></i>
                 <span>E-Voting</span>
             </a>
