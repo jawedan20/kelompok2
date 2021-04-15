@@ -4,38 +4,7 @@
 @stop
 <div class="container mt-3">
     <div class="row justify-content-center">
-        <div class="col-xl-5 col-md-12 mb-3">
-            <div class="card c1 shadow py-1">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Jumlah pemilih</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$sum[0]-> total}}</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-vote-yea fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-5 col-md-12 mb-3">
-            <div class="card c2 shadow py-1">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Jumlah Event</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$sumVotes[0]->total}}</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
     </div>
     <div>
         <div class="mb-4">

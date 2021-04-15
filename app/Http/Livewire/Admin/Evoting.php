@@ -23,12 +23,8 @@ class Evoting extends Component
         if ($this->search !== null) {
             $votes = Votes::where('event', 'like', '%' . $this->search . '%')->paginate(5);
         }
-        $sum = User::select(User::raw('count(id) as total'))->get();
-        $sumVotes = Votes::select(User::raw('count(id) as total'))->get();
         return view('livewire.admin.evoting', [
             'votes' => $votes,
-            'sum' => $sum,
-            'sumVotes' => $sumVotes,
         ]);
     }
 
