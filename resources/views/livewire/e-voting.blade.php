@@ -20,12 +20,12 @@
                     @if($vote -> status == "closed")
                     <a class="btn btn-sm btn-danger">Result</a>
                     @elseif($vote -> status == "ongoing")
-                    @if($vote->voted)
-                    Voted
-                    @else
-                    <a href="/evoting/{{$vote -> id}}" class="btn btn-sm btn-primary">Options</a>
-                    @endif
-                    @else
+                        @if($vote->voted)
+                        Voted
+                        @else
+                        <a href="/evoting/{{$vote -> id}}" class="btn btn-sm btn-primary">Options</a>
+                        @endif
+                        @else
                     Waiting
                     @endif
                 </td>

@@ -6,26 +6,31 @@ use Livewire\Component;
 use App\Models\Candidates;
 use App\Models\StudentsVotes;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 
 class Result extends Component
 {
-    public $studentsVotes, $candidates;
+    public $result;
+    public $idVote;
     public function mount($idVote)
     {
-        $this->candidates = Candidates::where('id_vote', $idVote)->get();
-        $this->studentsVotes = StudentsVotes::where('id_vote', $idVote)->select(StudentsVotes::raw('count(id_candidate) as vote'))->groupBy('id_candidate')->get();
+        $this->idVote = $idVote;
+        $this->result = StudentsVotes::join('candidates', 'candidates.id', '=', 'vote_students.id_candidate')
+            ->where('vote_students.id_vote', $idVote)
+            ->selectRaw('candidates.id, candidates.nama, COUNT(candidates.id) as vote')
+            ->groupBy('candidates.id')
+            ->get();
     }
 
     public function render()
     {
-        $sum= User::select(User::raw('count(id) as total'))->get();
-        print_r(json_decode($this->studentsVotes));
-        die;
+        $sum = User::select(User::raw('count(id) as total'))->get();
+        $sudahPilih = StudentsVotes::where('id_vote', $this->idVote)->count();
         return view('livewire.admin.result', [
-            'candidates' => $this->candidates,
-            'votes' => $this->studentsVotes,
+            'results' => $this->result,
             'sum' => $sum,
+            'sudahPilih' => $sudahPilih,
         ]);
     }
 }

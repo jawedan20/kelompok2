@@ -48,14 +48,14 @@ class Event extends Component
             'status' => $this->status,
             'keterangan' => $this->keterangan,
         ]);
-        
-        session()->flash('message', 'Post successfully updated.');
-        return redirect()->to('/admin/event');
 
-        $this->kegiatan = "";
         $this->waktu = "";
-        $this->status = "belum";
+        $this->kegiatan = "";
         $this->keterangan = "";
+        
+        session()->flash('message', 'Events successfully created or updated.');
+        return redirect()->to('/admin/event');
+        
     }
 
     public function edit($id)
@@ -71,5 +71,7 @@ class Event extends Component
     public function delete($id)
     {
         Events::find($id)->delete();
+
+        session()->flash('message', 'Events successfully deleted.');
     }
 }

@@ -5,18 +5,14 @@
                 <h6 class="m-0 font-weight-bold text-primary">Perolehan suara</h6>
             </div>
             <div class="card-body">
-                @if($candidates)
-                @foreach($candidates as $index=>$candidate)
+                @foreach($results as $result)
                 <div class="mb-4">
-                    <h4 class="h6 font-weight-bold">{{ $candidate->nama }}<span class="float-right">{{$votes[$index]->vote}}</span></h4>
+                    <h4 class="h6 font-weight-bold">{{ $result->nama }}<span class="float-right">{{$result->vote}}</span></h4>
                     <div class="progress">
-                        {{$candidate[]}}
-                        <div class="progress-bar" style="width : {{$votes[$index]->vote / $sum[0]->total /100}}%" role="progressbar" aria-valuenow="{{$votes[$index]->vote}}" aria-valuemin="0" aria-valuemax="{{$sum[0]->total}}"></div>
+                        <div class="progress-bar" style="width: {{$result->vote/$sum[0]->total*100}}%;" role="progressbar" aria-valuenow="{{$result->vote}}" aria-valuemin="0" aria-valuemax="{{$sum[0]->total}}"></div>
                     </div>
                 </div>
                 @endforeach
-                @endif
-
             </div>
         </div>
     </div>
@@ -57,7 +53,7 @@
         data: {
             labels: ["Sudah Pilih", "Sisa pemilih"],
             datasets: [{
-                data: [55, 30],
+                data: [ {{$sudahPilih}}, {{$sum[0]->total-$sudahPilih}} ],
                 backgroundColor: ['#4e73df', '#1cc88a', ],
                 hoverBackgroundColor: ['#2e59d9', '#17a673', ],
                 hoverBorderColor: "rgba(234, 236, 244, 1)",

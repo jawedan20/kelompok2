@@ -1,4 +1,4 @@
 @section('page', 'Dashboard')
-<div>
-    <h2>Selamat datang di Krida </h2>
+<div class="container">
+    <h2 class="text-primary" style="font-size: 1.2rem;">Selamat datang di Krida </h2>
 </div>

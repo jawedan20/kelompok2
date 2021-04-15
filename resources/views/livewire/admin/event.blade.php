@@ -13,13 +13,13 @@
                     <input type="text" wire:model="search" placeholder="Search.." class="form-control form-control-sm">
                 </div>
             </div>
+            @if (session()->has('message'))
+            <small class="d-block h6 alert alert-success">
+                {{ session('message') }}
+            </small>
+            @endif
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    @if (session()->has('message'))
-                    <small class="alert alert-success">
-                        {{ session('message') }}
-                    </small>
-                    @endif
                     <thead>
                         <tr style=" text-align:center; border-bottom: 1px solid #e1e1e1; color:#a1a4ab; font-size: 0.8rem; font-weight: 600;">
                             <td>No</td>

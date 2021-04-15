@@ -39,11 +39,11 @@
                 <i class="fas fa-fw fa-home fa-lg"></i>
                 <span class="pl-3">Dashboard</span>
             </a>
-            <a class="sidenav-link" href="/admin/evoting">
+            <a class="sidenav-link" href="{{ url('/admin/evoting') }}">
                 <i class="fas fa-fw fa-vote-yea fa-lg"></i>
                 <span class="pl-3">E-Voting</span>
             </a>
-            <a class="sidenav-link" href="/admin/event">
+            <a class="sidenav-link" href="{{ url('/admin/event') }}">
                 <i class="fas fa-fw fa-calendar fa-lg"></i>
                 <span class="pl-3">Event</span>
             </a>
@@ -53,11 +53,11 @@
                 <i class="fas fa-fw fa-home fa-lg"></i>
                 <span>Dashboard</span>
             </a>
-            <a class="botnav-link" href="/admin/evoting">
+            <a class="botnav-link" href="{{ url('/admin/evoting') }}">
                 <i class="fas fa-fw fa-vote-yea fa-lg"></i>
                 <span>E-Voting</span>
             </a>
-            <a class="botnav-link" href="/admin/event">
+            <a class="botnav-link" href="{{ url('/admin/event') }}">
                 <i class="fas fa-fw fa-calendar fa-lg"></i>
                 <span>Event</span>
             </a>
@@ -69,37 +69,37 @@
                     KRIDA
                 </h1>
             </div>
-            <a class="sidenav-link" href="/dashboard">
+            <a class="sidenav-link" href="{{ url('/dashboard') }}">
                 <i class="fas fa-fw fa-home fa-lg"></i>
                 <span class="pl-3">Dashboard</span>
             </a>
-            <a class="sidenav-link" href="/evoting">
+            <a class="sidenav-link" href="{{ url('/evoting') }}">
                 <i class="fas fa-fw fa-vote-yea fa-lg"></i>
                 <span class="pl-3">E-Voting</span>
             </a>
-            <a class="sidenav-link" href="/event">
+            <a class="sidenav-link" href="{{ url('/event') }}">
                 <i class="fas fa-fw fa-calendar fa-lg"></i>
                 <span class="pl-3">Event</span>
             </a>
-            <a class="sidenav-link" href="/profile">
+            <a class="sidenav-link" href="{{ url('/profile') }}">
                 <i class="fas fa-fw fa-user fa-lg"></i>
                 <span class="pl-3">Profile</span>
             </a>
         </div>
         <div class="bar-responsive fixed-bottom bg-primary d-none ">
-            <a class="botnav-link" href="/dashboard">
+            <a class="botnav-link" href="{{ url('/dashboard') }}">
                 <i class="fas fa-fw fa-home fa-lg"></i>
                 <span>Dashboard</span>
             </a>
-            <a class="botnav-link" href="/evoting">
+            <a class="botnav-link" href="{{ url('/evoting') }}">
                 <i class="fas fa-fw fa-vote-yea fa-lg"></i>
                 <span>E-Voting</span>
             </a>
-            <a class="botnav-link" href="/event">
+            <a class="botnav-link" href="{{ url('/event') }}">
                 <i class="fas fa-fw fa-calendar fa-lg"></i>
                 <span>Event</span>
             </a>
-            <a class="botnav-link" href="/profile">
+            <a class="botnav-link" href="{{ url('/profile') }}">
                 <i class="fas fa-fw fa-user fa-lg"></i>
                 <span>Profile</span>
             </a>
