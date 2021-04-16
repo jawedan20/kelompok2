@@ -26,14 +26,15 @@ class Candidate extends Component
             'candidates' => $this->candidates,
         ]);
     }
+
     public function vote($idCandidate)
     {
         $student = Students::where('userId', Auth::user()->id)->first();
-        StudentsVotes::create([
+        $result = StudentsVotes::create([
             'id_vote' => $this->idVote,
             'id_students' => $student->id,
             'id_candidate' => $idCandidate,
         ]);
-        return redirect()->to('/evoting?param='.$idCandidate.'@'.$student->id);
+        return redirect()->to('/evoting');
     }
 }

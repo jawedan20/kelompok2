@@ -4,7 +4,7 @@
 @stop
 <div class="container mt-3">
     <div class="row justify-content-center">
-        
+
     </div>
     <div>
         <div class="mb-4">
@@ -37,11 +37,11 @@
                                 @if($vote->status == 'pending')
                                 <a wire:click="setStatus({{$vote->id}}, 'ongoing')" class="btn btn-sm btn-success">Start</a>
                                 <a wire:click="setStatus({{$vote->id}}, 'cancel')" class="btn btn-sm btn-outline-success">Cancel</a>
-                                <a class="btn btn-sm btn-sm btn-danger"><i class="fas fa-trash fa-sm"></i></a>
+                                <a data-toggle="modal" data-target="#exampleModal" class="btn btn-sm btn-sm btn-danger"><i class="fas fa-trash fa-sm"></i></a>
                                 @elseif($vote->status == 'ongoing')
                                 <a wire:click="setStatus({{$vote->id}}, 'closed')" class="btn  btn-sm btn-outline-danger">Close</a>
                                 @else
-                                <a wire:click="delete({{$vote->id}})" class="btn btn-sm btn-danger"><i class="fas fa-trash fa-sm"></i></a>
+                                <a data-toggle="modal" data-target="#exampleModal" class="btn btn-sm btn-danger"><i class="fas fa-trash fa-sm"></i></a>
                                 @endif
                             </td>
                             <td>
@@ -52,6 +52,25 @@
                                 @endif
                             </td>
                         </tr>
+                        <div wire:ignore.self class="modal fade" id="exampleModal" aria-hidden="true">
+                            <div class="modal-dialog ">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Delete Confirm</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true close-btn">×</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p style="font-size:1rem; color:dimgray;">Apakah anda yakin untuk menghapusnya?</p>
+                                        <div class="text-right">
+                                            <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Tidak</button>
+                                            <button type="button" wire:click.prevent="delete({{ $vote->id }})" class="btn btn-danger close-modal" data-dismiss="modal">Iyah</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         @endforeach
                     </table>
                 </div>
@@ -95,5 +114,8 @@
                 </div>
             </div>
         </form>
+
+
+
     </div>
 </div>

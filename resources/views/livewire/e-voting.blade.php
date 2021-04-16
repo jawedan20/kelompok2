@@ -24,8 +24,9 @@
                         @if($vote->voted)
                         Voted
                         @endif
-                        @endif
+                        @else
                         <a href="/evoting/{{$vote -> id}}" class="btn btn-sm btn-primary">Options</a>
+                        @endif
                     @else
                     Waiting
                     @endif
