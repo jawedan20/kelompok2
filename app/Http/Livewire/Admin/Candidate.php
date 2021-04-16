@@ -64,6 +64,19 @@ class Candidate extends Component
         
         return redirect()->to("/admin/evoting/$this->idVote");
     }
+
+    public function edit($id)
+    {
+        $candidate = Candidates::findOrfail($id);
+        $this->idVote = $id;
+        $this->nama = $candidate->nama;
+        $this->kelas = $candidate->kelas;
+        $this->visi = $candidate->visi;
+        $this->misi = $candidate->misi;
+        $this->foto = $candidate->foto;
+        $this->idVote = $candidate->id_vote;
+    }
+
     public function delete($id)
     {
         Candidates::find($id)->delete();

@@ -1,4 +1,9 @@
+@section('page', 'Kandidat')
+
 <div>
+    <div >
+        <a style="font-size:0.8rem;" href="{{ url('/admin/evoting') }}">kembali</a>
+    </div>
     <div class="mb-4">
         <div class="card shadow">
             <div class="card-header py-2">
@@ -33,7 +38,7 @@
                         <td style="max-width: 100px; text-align: left;">{{$candidate->misi}}</td>
                         <td><img height="60px" width="80px" src="{{asset('storage/foto/'.$candidate->foto)}}" alt="iojasd"></td>
                         <td>
-                            <a class="btn btn-sm btn-outline-danger"><i class="fas fa-edit fa-sm"></i></a>
+                            <a wire:click="edit({{$candidate->id}})" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-edit fa-sm"></i></a>
                             <a wire:click="delete({{$candidate->id}})" class="btn btn-sm btn-danger"><i class="fas fa-trash fa-sm"></i></a>
                         </td>
                     </tr>

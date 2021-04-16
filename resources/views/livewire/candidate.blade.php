@@ -20,7 +20,7 @@
                         <div class="card" style="width: 12rem;">
                             <div class="vote">
                                 <img height="150px" src="{{asset('storage/foto/'.$candidate -> foto)}}" class="card-img-top" alt="foto kandidat">
-                                <a wire:click="vote({{$candidate->id}}, {{ Auth::user()->id}})" style="position:absolute; left:35%; top:25%;" class="vote-btn btn btn-primary">Vote</a>
+                                <a wire:click="vote({{$candidate->id}})" style="position:absolute; left:35%; top:25%;" class="vote-btn btn btn-primary">Vote</a>
                             </div>
                             <div class="card-body text-center">
                                 <h5 style="margin-bottom: 5px;" class="card-title">{{$candidate -> nama}}</h5>
@@ -40,7 +40,7 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content d-flex flex-row ">
                 <div class="modal-header">
-                    <img src="{{asset('img/pmr.png')}}" class="card-img-top" alt="...">
+                    <img src="{{asset('storage/foto/'.$candidates[0] -> foto)}}" class="card-img-top" alt="...">
                 </div>
                 <div class="modal-body">
                     

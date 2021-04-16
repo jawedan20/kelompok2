@@ -5,7 +5,10 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 
 use App\Models\StudentsVotes;
+use App\Models\Students;
 use App\Models\Candidates;
+use Illuminate\Support\Facades\Auth;
+
 
 class Candidate extends Component
 {
@@ -23,14 +26,14 @@ class Candidate extends Component
             'candidates' => $this->candidates,
         ]);
     }
-    public function vote($idCandidate, $idUsers)
+    public function vote($idCandidate)
     {
-        
+        $student = Students::where('userId', Auth::user()->id)->first();
         StudentsVotes::create([
             'id_vote' => $this->idVote,
-            'id_students' => $idUsers,
+            'id_students' => $student->id,
             'id_candidate' => $idCandidate,
         ]);
-        return redirect()->to('/evoting');
+        return redirect()->to('/evoting?param='.$idCandidate.'@'.$student->id);
     }
 }

@@ -39,9 +39,9 @@
                             <td>{{ $event->status }}</td>
                             <td>{{ $event->keterangan }}</td>
                             <td>
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Delete</button>
-                                <button wire:click="edit( {{ $event->id}} )" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <i class="far fa-edit"></i>
+                                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-trash fa-sm"></i></button>
+                                <button wire:click="edit( {{ $event->id}} )" type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                    <i class="far fa-edit fa-sm"></i>
                                 </button>
                             </td>
                         </tr>

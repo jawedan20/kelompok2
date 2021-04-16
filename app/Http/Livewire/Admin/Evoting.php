@@ -50,12 +50,14 @@ class Evoting extends Component
 
         return redirect()->to('/admin/evoting');
     }
+    
     public function setStatus($id, $status)
     {
         Votes::where('id', $id)->update([
             'status' => $status
         ]);
     }
+    
     public function delete($id)
     {
         Votes::find($id)->delete();

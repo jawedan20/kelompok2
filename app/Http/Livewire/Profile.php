@@ -11,7 +11,6 @@ class Profile extends Component
     public function render()
     {
         $student = Students::where('userId', Auth::user()->id)->first();
-
         return view('livewire.profile',[
             "student" => $student,
         ]);

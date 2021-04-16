@@ -9,9 +9,5 @@ class Candidates extends Model
 {
     protected $table = 'candidates';
     protected $guarded = [];
-    public function votes()
-    {
-        return $this->hasMany(Votes::class);
-    }
     use HasFactory;
 }
