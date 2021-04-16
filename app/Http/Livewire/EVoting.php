@@ -17,13 +17,12 @@ class EVoting extends Component
         $student = Students::where('userId', Auth::user()->id)->first();
         $voted = StudentsVotes::where('id_students', $student->id)->get();
         foreach ($json as $vote) {
+            $vote->voted = false;
             foreach (json_decode($voted) as $key => $voteValue) {
                 if ($vote->id == $voteValue->id_vote) {
                     $vote->voted = true;
                     unset($voted[$key]);
                     break;
-                } else {
-                    $vote->voted = false;
                 }
             }
         }
