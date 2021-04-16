@@ -18,7 +18,7 @@
                 <td>{{$vote -> status}}</td>
                 <td>
                     @if($vote -> status == "closed")
-                    <a class="btn btn-sm btn-danger">Result</a>
+                    <a href="/result/{{$vote -> id}}" class="btn btn-sm btn-danger">Result</a>
                     @elseif($vote -> status == "ongoing")
                         @if($vote->voted)
                         Voted

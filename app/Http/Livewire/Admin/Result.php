@@ -3,10 +3,8 @@
 namespace App\Http\Livewire\Admin;
 
 use Livewire\Component;
-use App\Models\Candidates;
 use App\Models\StudentsVotes;
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
 
 
 class Result extends Component
